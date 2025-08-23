@@ -14,4 +14,4 @@ jobs:
       - name: curl
         uses: enflo/curl-action@master
         with:
-          curl: -X POST https://copr.fedorainfracloud.org/webhooks/custom/183973/b217f930-6409-41d8-ad9c-eefe9a425524/yazi/
+          curl: -X POST https://copr.fedorainfracloud.org/webhooks/github/192871/7bf3c613-5906-4b97-afe3-d79aa232a7e7/yazi
