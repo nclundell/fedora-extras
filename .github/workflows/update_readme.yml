@@ -19,5 +19,6 @@ jobs:
           if ! git diff --quiet README.md; then
             git add README.md
             git commit -m "Update README badges [auto]"
+            git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
             git push
           fi
