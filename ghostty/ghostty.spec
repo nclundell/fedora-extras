@@ -1,5 +1,5 @@
 Name:           ghostty
-Version:        1.1.2
+Version:        1.1.3
 Release:        1%{?dist}
 Summary:        Fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration
 
@@ -58,9 +58,6 @@ zig build \
     -Dpie=true \
     -Demit-docs
 
-%if 0%{?fedora} == 42
-    rm -f "%{buildroot}%{_prefix}/share/terminfo/g/ghostty"
-%endif
 
 %files
 %license LICENSE
@@ -88,16 +85,14 @@ zig build \
 %{_prefix}/share/nvim/site/ftdetect/ghostty.vim
 %{_prefix}/share/nvim/site/ftplugin/ghostty.vim
 %{_prefix}/share/nvim/site/syntax/ghostty.vim
+%{_prefix}/share/terminfo/g/ghostty
+%{_prefix}/share/terminfo/x/xterm-ghostty
 %{_prefix}/share/vim/vimfiles/compiler/ghostty.vim
 %{_prefix}/share/vim/vimfiles/ftdetect/ghostty.vim
 %{_prefix}/share/vim/vimfiles/ftplugin/ghostty.vim
 %{_prefix}/share/vim/vimfiles/syntax/ghostty.vim
 %{_prefix}/share/zsh/site-functions/_ghostty
 
-%{_prefix}/share/terminfo/x/xterm-ghostty
-%if 0%{?fedora} != 42
-    %{_prefix}/share/terminfo/g/ghostty
-%endif
 
 %changelog
 %autochangelog
