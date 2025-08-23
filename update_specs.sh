@@ -11,10 +11,11 @@ for spec in */*.spec; do
     fi
 
     name=$(awk '/^Name:/ {print $2}' "$spec")
-    version=$(awk '/^Version:/ {print $2}' "$spec")
+    version=$(awk '/^Version:/ {print $2}' "$spec" | sed 's/^v//')
     url=$(awk '/^URL:/ {print $2}' "$spec")
-
+    url=$(echo "$url" | sed "s/%{name}/$name/g")
     repo=$(echo "$url" | sed -n 's|https://github.com/\([^/]\+\)/\([^/]\+\).*|\1/\2|p')
+
     if [ -z "$repo" ]; then
         msg="Could not parse repo from URL in $spec"
         echo "$msg"
@@ -39,9 +40,14 @@ for spec in */*.spec; do
         continue
     fi
 
+    # Normalize latest version string
+    latest=$(echo "$latest" | sed 's/^v//')
+
     if [ "$version" != "$latest" ]; then
         branch="update-${name}-to-v${latest}"
         echo "Updating $name: $version -> $latest (branch $branch)"
+        # Delete branch if it already exists
+        git branch -D "$branch" 2>/dev/null || true
         git checkout -b "$branch"
         sed -i "s/^Version:.*/Version: $latest/" "$spec"
         git add "$spec"
