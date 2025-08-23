@@ -18,6 +18,7 @@ Requires: ffmpeg
 Requires: fd-find
 Requires: ripgrep
 Requires: fzf
+Requires: mediainfo
 
 %description
 
