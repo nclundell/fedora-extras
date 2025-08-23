@@ -1,7 +1,17 @@
 #!/bin/sh
 
 cat > README.md <<EOF
-This repository contains Fedora package specs and build automation.
+## 🐉 HERE BE DRAGONS 🐉
+
+**⚠️ Warning: ⚠️**
+The package selection in this repository is subject to change at any time, based on my whimsy.
+Use at your own risk!
+
+## Packages and Copr Build Status
+
+| Package   | Version   | Status |
+|-----------|-----------|:------:|
+
 
 ## Packages and Copr Build Status
 
