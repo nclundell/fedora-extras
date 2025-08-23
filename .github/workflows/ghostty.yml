@@ -1,10 +1,10 @@
-name: build yazi
+name: build ghostty
 on:
   push:
     branches:
       - main
     paths:
-      - yazi/yazi.spec
+      - ghostty/ghostty.spec
   workflow_dispatch:
 
 jobs:
@@ -16,4 +16,4 @@ jobs:
         with:
           curl: >
             -X POST
-            https://copr.fedorainfracloud.org/webhooks/custom/192871/7bf3c613-5906-4b97-afe3-d79aa232a7e7/yazi/
+            https://copr.fedorainfracloud.org/webhooks/custom/192871/7bf3c613-5906-4b97-afe3-d79aa232a7e7/ghostty/

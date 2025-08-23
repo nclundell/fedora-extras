@@ -1,4 +1,4 @@
-name: starship copr rebuild
+name: build starship
 on:
   push:
     branches:
