@@ -13,7 +13,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Run badge update script
-        run: bash ./update-readme.sh
+        run: bash ./update_readme.sh
       - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions[bot]"
