@@ -1,9 +1,14 @@
 #!/bin/sh
 
+COPR_URL="https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/packages/"
+TMP_HTML=$(mktemp)
+
+curl -s "$COPR_URL" > "$TMP_HTML"
+
 cat > README.md <<EOF
 ## 🐉 HERE BE DRAGONS 🐉
 
-**⚠️ Warning ⚠️**
+### ⚠️ Warning ⚠️
 The package selection in this repository is subject to change at any time, based on my whimsy.
 Use at your own risk!
 
@@ -13,26 +18,25 @@ Use at your own risk!
 |-----------|-----------|:------:|
 EOF
 
-# Fetch package info from Copr API once
-api_json=$(curl -s "$COPR_API")
-
 for spec in */*.spec; do
     name=$(awk '/^Name:/ {print $2}' "$spec")
-    version=$(awk '/^Version:/ {print $2}' "$spec")
-    url="https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/$name/"
-
-    # Extract last_build_status for this package from API JSON
-    status_raw=$(echo "$api_json" | jq -r --arg pkg "$name" '.packages[] | select(.name==$pkg) | .last_build_status')
-    case "$status_raw" in
-        "succeeded") status_icon="✅" ;;
-        "failed")    status_icon="❌" ;;
-        "skipped")   status_icon="⏭️" ;;
-        "canceled")  status_icon="🚫" ;;
-        "waiting")   status_icon="⏳" ;;
-        "running")   status_icon="🏃" ;;
-        *)           status_icon="❔" ;;
+    # Find the table row for this package
+    row=$(awk -v pkg="$name" 'BEGIN{IGNORECASE=1}/<tr/{inrow=0}/<td[^>]*>'pkg'<\/td>/{inrow=1; print; next} inrow && /<\/tr>/{print; exit} inrow{print}' "$TMP_HTML" | tr '\n' ' ')
+    # Extract last build version (second <td>), and last build status (fourth <td>)
+    last_build_version=$(echo "$row" | sed -n 's/.*<td[^>]*>[^<]*<\/td><td[^>]*>\([^<]*\)<\/td>.*/\1/p')
+    last_build_status=$(echo "$row" | sed -n 's/.*<td[^>]*>[^<]*<\/td><td[^>]*>[^<]*<\/td><td[^>]*>[^<]*<\/td><td[^>]*>\([^<]*\)<\/td>.*/\1/p')
+    case "$last_build_status" in
+        succeeded) status_icon="✅" ;;
+        failed)    status_icon="❌" ;;
+        skipped)   status_icon="⏭️" ;;
+        canceled)  status_icon="🚫" ;;
+        waiting)   status_icon="⏳" ;;
+        running)   status_icon="🏃" ;;
+        *)         status_icon="❔" ;;
     esac
-
+    url="https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/$name/"
     status="<div align=\"center\">$status_icon</div>"
-    echo "| [$name]($url) | v$version | $status |" >> README.md
+    echo "| [$name]($url) | $last_build_version | $status |" >> README.md
 done
+
+rm "$TMP_HTML"
