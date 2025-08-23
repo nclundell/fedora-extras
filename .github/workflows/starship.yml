@@ -14,4 +14,6 @@ jobs:
       - name: curl
         uses: enflo/curl-action@master
         with:
-          curl: -X POST https://copr.fedorainfracloud.org/webhooks/github/192871/7bf3c613-5906-4b97-afe3-d79aa232a7e7/starship/
+          curl: >
+            -X POST
+            https://copr.fedorainfracloud.org/webhooks/custom/192871/7bf3c613-5906-4b97-afe3-d79aa232a7e7/starship/
