@@ -52,7 +52,7 @@ install -Dpm 0644 target/man/eza_colors-explanation.5 -t %{buildroot}/%{_mandir}
 # Shell completions
 install -Dpm 0644 completions/bash/%{name} -t %{buildroot}/%{bash_completions_dir}
 install -Dpm 0644 completions/fish/%{name}.fish -t %{buildroot}/%{fish_completions_dir}
-install -Dpm 0644 completions/nu/eza.nu -t %{buildroot}%{nu_completions_dir}
+install -Dpm 0644 completions/nush/eza.nu -t %{buildroot}%{nu_completions_dir}
 install -Dpm 0644 completions/zsh/_%{name} -t %{buildroot}/%{zsh_completions_dir}
 
 %check
