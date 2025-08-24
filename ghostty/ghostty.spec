@@ -3,14 +3,12 @@ Version:        1.1.3
 Release:        1%{?dist}
 Summary:        Fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration
 
-
 License:        MIT
 URL:            https://github.com/ghostty-org/ghostty
 Source0:        https://github.com/ghostty-org/ghostty/archive/refs/tags/v%{version}.tar.gz
-
+Patch0:         ghostty-zig12.patch
 
 ExclusiveArch: x86_64 aarch64
-
 
 BuildRequires: fontconfig-devel
 BuildRequires: freetype-devel
@@ -27,7 +25,6 @@ BuildRequires: wayland-protocols-devel
 BuildRequires: zig
 BuildRequires: zlib-ng-devel
 
-
 Requires: fontconfig
 Requires: freetype
 Requires: glib2
@@ -39,14 +36,12 @@ Requires: oniguruma
 Requires: pixman
 Requires: zlib-ng
 
-
 %description
 %{summary}.
 
-
 %prep
 %setup -q -n ghostty-%{version}
-
+%patch 0 -p1
 
 %build
 zig build \
@@ -94,7 +89,6 @@ install -Dpm 0755 zig-out/bin/ghostty %{buildroot}%{_bindir}/ghostty
 %{_prefix}/share/vim/vimfiles/ftplugin/ghostty.vim
 %{_prefix}/share/vim/vimfiles/syntax/ghostty.vim
 %{_prefix}/share/zsh/site-functions/_ghostty
-
 
 %changelog
 %autochangelog

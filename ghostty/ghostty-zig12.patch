@@ -1,0 +1,8 @@
+--- a/build.zig.zon
++++ b/build.zig.zon
+@@ -2,7 +2,7 @@
+ {
+-    .name = "ghostty",
++    .name = .ghostty,
+     # ... other fields ...
+ }
