@@ -1,4 +1,4 @@
-name: Update specs and open PRs or Issues
+name: update specs
 
 on:
   schedule:
