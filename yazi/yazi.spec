@@ -1,7 +1,6 @@
 %global debug_package %{nil}
 
 Name:    yazi
-# renovate: datasource=github-releases depName=sxyazi/yazi
 Version: 25.5.31
 Release: %autorelease
 Summary: Blazing Fast Terminal File Manager
@@ -20,17 +19,22 @@ Requires: ripgrep
 Requires: fzf
 
 %description
+Yazi is a blazing fast terminal file manager written in Rust.
 
 %prep
 %autosetup -n %{name}-%{version}
 
 %build
 export RUSTFLAGS="%{build_rustflags}"
-cargo build --release
+cargo build --release --lock
 
 %install
 install -Dpm 0755 target/release/ya -t %{buildroot}%{_bindir}/
 install -Dpm 0755 target/release/yazi -t %{buildroot}%{_bindir}/
+
+%check
+%{buildroot}%{_bindir}/ya   --version
+%{buildroot}%{_bindir}/yazi --version
 
 %files
 %license LICENSE
