@@ -31,7 +31,7 @@ install -Dpm 0755 target/release/bluetui -t %{buildroot}%{_bindir}/
 
 %files
 %license LICENSE
-%doc README.md
+%doc Readme.md
 %{_bindir}/bluetui
 
 %changelog
