@@ -19,7 +19,7 @@ Starship is a minimal, blazing-fast, and infinitely customizable prompt for any 
 
 %build
 export RUSTFLAGS="%{build_rustflags}"
-cargo build --release --lock
+cargo build --release
 
 %install
 install -Dpm 0755 target/release/starship -t %{buildroot}%{_bindir}/

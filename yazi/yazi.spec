@@ -26,7 +26,7 @@ Yazi is a blazing fast terminal file manager written in Rust.
 
 %build
 export RUSTFLAGS="%{build_rustflags}"
-cargo build --release --lock
+cargo build --release
 
 %install
 install -Dpm 0755 target/release/ya -t %{buildroot}%{_bindir}/
