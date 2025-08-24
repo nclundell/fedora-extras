@@ -6,7 +6,7 @@ Summary:        Fast, feature-rich, and cross-platform terminal emulator that us
 License:        MIT
 URL:            https://github.com/ghostty-org/ghostty
 Source0:        https://github.com/ghostty-org/ghostty/archive/refs/tags/v%{version}.tar.gz
-Patch0:         ghostty-zig12.patch
+Source1:        fix-zig-zon.sh
 
 ExclusiveArch: x86_64 aarch64
 
@@ -41,7 +41,8 @@ Requires: zlib-ng
 
 %prep
 %setup -q -n ghostty-%{version}
-%patch 0 -p1
+cp %{SOURCE1} .
+./fix-zig-zon.sh
 
 %build
 zig build \
