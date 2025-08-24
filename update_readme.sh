@@ -2,21 +2,22 @@
 
 COPR_URL="https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/packages/"
 TMP_HTML=$(mktemp)
-TMP_TABLE=$(mktemp)
-TMP_BODY=$(mktemp)
 TMP_ROWS=$(mktemp)
 
-curl -s "$COPR_URL" > "$TMP_HTML"
+# Get the HTML content
+curl -s "$COPR_URL" | tr '\n' ' ' > "$TMP_HTML"
 
-# Extract the table with id="DataTables_Table_0"
-awk '/<table[^>]*id="DataTables_Table_0"/,/<\/table>/' "$TMP_HTML" > "$TMP_TABLE"
+# Extract data rows from the package table
+perl -0777 -ne '
+    while (/<table[^>]*class="[^"]*datatable[^"]*dataTable[^"]*"[^>]*>.*?<\/table>/gs) {
+        my $table = $&;
+        while ($table =~ /<tr[^>]*>.*?<td.*?<\/td>.*?<\/tr>/gs) {
+            print "$&\n";
+        }
+    }
+' "$TMP_HTML" > "$TMP_ROWS"
 
-# Now extract only the tbody section from that table
-awk '/<tbody>/,/<\/tbody>/' "$TMP_TABLE" > "$TMP_BODY"
-
-# Collapse each <tr>...</tr> to a single line for easier parsing
-awk '/<tr /,/<\/tr>/' "$TMP_BODY" | tr -d '\n' | sed 's|</tr>|</tr>\n|g' > "$TMP_ROWS"
-
+# Prepare README.md with header
 cat > README.md <<EOF
 ## 🐉 HERE BE DRAGONS 🐉
 The package selection in this repository is subject to change at any time, based on my whimsy.
@@ -31,11 +32,10 @@ EOF
 
 # Now iterate over each row
 while read -r row; do
-    # Extract all <td>...</td> fields into an array
-    tds=()
-    while read -r td; do
-        tds+=("$td")
-    done < <(echo "$row" | grep -o '<td[^>]*>.*</td>')
+    [ -z "$row" ] && continue  # Skip blank lines
+
+    # Extract all <td>...</td> fields into an array, robust to newlines
+    mapfile -t tds < <(echo "$row" | perl -nle 'print for /<td[^>]*>.*?<\/td>/gs')
 
     # Data from the Name column (first <td>)
     pkg_link=$(echo "${tds[0]}" | sed -n 's/.*<a href="\([^"]*\)">.*<\/a>.*/\1/p')
@@ -63,4 +63,4 @@ while read -r row; do
     echo "| [$pkg_name]($pkg_url) | $version | <div align=\"center\">$status_icon</div> |" >> README.md
 done < $TMP_ROWS
 
-rm "$TMP_HTML" "$TMP_TABLE" "$TMP_BODY" "$TMP_ROWS"
+rm "$TMP_HTML" "$TMP_ROWS"
