@@ -10,6 +10,8 @@ Source:  %{url}/archive/refs/tags/v%{version}.tar.gz
 
 BuildRequires: cargo
 BuildRequires: rust
+BuildRequires: dbus-devel
+BuildRequires: pkgconf-pkg-config
 
 %description
 TUI for managing bluetooth on Linux
