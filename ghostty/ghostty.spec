@@ -58,6 +58,8 @@ zig build \
     -Dpie=true \
     -Demit-docs
 
+%install
+install -Dpm 0755 zig-out/bin/ghostty %{buildroot}%{_bindir}/ghostty
 
 %files
 %license LICENSE
