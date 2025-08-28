@@ -54,8 +54,8 @@ while read -r row; do
         failed)    status_icon="❌" ;;
         skipped)   status_icon="⏭️" ;;
         canceled)  status_icon="🚫" ;;
-        waiting)   status_icon="⏳" ;;
-        running)   status_icon="🏃" ;;
+        pending)   status_icon="⏳" ;;
+        running)   status_icon="🚧" ;;
         *)         status_icon="❔" ;;
     esac
 
