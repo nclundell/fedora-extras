@@ -59,8 +59,8 @@ install -Dpm 0644 completions/zsh/_%{name} -t %{buildroot}/%{zsh_completions_dir
 %{buildroot}%{_bindir}/%{name} --version
 
 %files
-%license LICENSE.txt LICENSE.summary LICENSE.dependencies
 %doc CHANGELOG.md README.md
+%license LICENSE.txt LICENSE.summary LICENSE.dependencies
 %{_bindir}/%{name}
 %{_mandir}/man1/eza.1*
 %{_mandir}/man5/eza_colors*

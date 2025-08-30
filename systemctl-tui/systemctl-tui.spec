@@ -22,6 +22,10 @@ systemctl-tui can quickly browse service status and logs, start/stop/restart/rel
 export RUSTFLAGS="%{build_rustflags}"
 cargo build --release --locked
 
+# Generate license documentation
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}' | sort -u > LICENSE.summary
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}: {p}' | sort -u > LICENSE.dependencies
+
 %install
 install -Dpm 0755 target/release/systemctl-tui -t %{buildroot}%{_bindir}/
 
@@ -29,8 +33,8 @@ install -Dpm 0755 target/release/systemctl-tui -t %{buildroot}%{_bindir}/
 %{buildroot}%{_bindir}/systemctl-tui --version
 
 %files
-%license LICENSE
 %doc README.md
+%license LICENSE LICENSE.summary LICENSE.dependencies
 %{_bindir}/systemctl-tui
 
 %changelog

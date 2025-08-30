@@ -26,6 +26,10 @@ Inspired by both gtop and gotop.
 export RUSTFLAGS="%{build_rustflags}"
 cargo build --release --locked
 
+# Generate license documentation
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}' | sort -u > LICENSE.summary
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}: {p}' | sort -u > LICENSE.dependencies
+
 %install
 install -Dpm 0755 target/release/btm -t %{buildroot}%{_bindir}/
 
@@ -35,9 +39,12 @@ install -Dpm 0644 btm.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/btm
 install -Dpm 0644 btm.nu   %{buildroot}%{_datadir}/nushell/completions/btm.nu
 install -Dpm 0644 _btm     %{buildroot}%{_datadir}/zsh/site-functions/_btm
 
+%check
+%{buildroot}%{_bindir}/btm --version
+
 %files
-%license LICENSE
 %doc README.md CHANGELOG.md CONTRIBUTING.md sample_configs/
+%license LICENSE LICENSE.summary LICENSE.dependencies
 %{_bindir}/btm
 %{_datadir}/bash-completion/completions/btm
 %{_datadir}/fish/vendor_completions.d/btm.fish

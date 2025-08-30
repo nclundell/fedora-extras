@@ -23,6 +23,10 @@ TUI for managing bluetooth on Linux
 export RUSTFLAGS="%{build_rustflags}"
 cargo build --release --locked
 
+# Generate license documentation
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}' | sort -u > LICENSE.summary
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}: {p}' | sort -u > LICENSE.dependencies
+
 %install
 install -Dpm 0755 target/release/bluetui -t %{buildroot}%{_bindir}/
 
@@ -30,8 +34,8 @@ install -Dpm 0755 target/release/bluetui -t %{buildroot}%{_bindir}/
 %{buildroot}%{_bindir}/bluetui --version
 
 %files
-%license LICENSE
 %doc Readme.md
+%license LICENSE LICENSE.summary LICENSE.dependencies
 %{_bindir}/bluetui
 
 %changelog

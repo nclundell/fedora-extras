@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 Name:     topgrade
 Version:  16.0.4
 Release:  %autorelease
@@ -19,20 +21,23 @@ commands to update them.
 %prep
 %autosetup
 
-
 %build
 cargo build --release --locked
 
+# Generate license documentation
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}' | sort -u > LICENSE.summary
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}: {p}' | sort -u > LICENSE.dependencies
 
 %install
 install -Dm755 target/release/topgrade %{buildroot}/usr/bin/topgrade
 
+%check
+%{buildroot}%{_bindir}/topgrade --version
 
 %files
-%license LICENSE
 %doc README.md
-/usr/bin/topgrade
-
+%license LICENSE LICENSE.summary LICENSE.dependencies
+%{_bindir}/topgrade
 
 %changelog
 %autochangelog
