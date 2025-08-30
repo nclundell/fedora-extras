@@ -10,7 +10,6 @@ Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: golang >= 1.24
 BuildRequires: go-md2man
-BuildRequires: go-licenses
 
 %description
 A simple terminal UI for both docker and docker-compose, written in Go.

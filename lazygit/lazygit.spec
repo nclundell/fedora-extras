@@ -10,7 +10,6 @@ Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: golang >= 1.24
 BuildRequires: go-md2man
-BuildRequires: go-licenses
 
 %description
 Lazygit is a simple terminal UI for Git commands, written in Go. It provides an intuitive interface for managing Git repositories from the command line.
