@@ -2,16 +2,15 @@
 
 Name:       lazydocker
 Version:    0.24.1
-Release:    1%{?dist}
+Release:    %autorelease
 Summary:    The lazier way to manage everything docker
 License:    MIT
 URL:        https://github.com/jesseduffield/lazydocker
 Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: golang >= 1.24
-%if 0%{?fedora}
 BuildRequires: go-md2man
-%endif
+BuildRequires: go-licenses
 
 %description
 A simple terminal UI for both docker and docker-compose, written in Go.
@@ -24,23 +23,25 @@ go build \
     -ldflags "-X main.version=%{version} -s -w" \
     -o _build/%{name}
 
-%if 0%{?fedora}
+# Generate license documentation
+go-licenses csv . > LICENSE.dependencies
+go-licenses report . | awk -F, '{print $2}' | sort -u > LICENSE.summary
+
+# Generate Man page
 go-md2man -in README.md -out %{name}.1
-%endif
 
 %install
 install -Dpm 0755 _build/%{name} %{buildroot}%{_bindir}/%{name}
-%if 0%{?fedora}
 install -Dpm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
-%endif
+
+%check
+%{buildroot}%{_bindir}/%{name} --version
 
 %files
-%license LICENSE
 %doc README.md CONTRIBUTING.md docs/
+%license LICENSE LICENSE.summary LICENSE.dependencies
 %{_bindir}/%{name}
-%if 0%{?fedora}
 %{_mandir}/man1/*.1*
-%endif
 
 %changelog
 %autochangelog
