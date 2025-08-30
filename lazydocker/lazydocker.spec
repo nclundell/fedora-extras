@@ -23,10 +23,6 @@ go build \
     -ldflags "-X main.version=%{version} -s -w" \
     -o _build/%{name}
 
-# Generate license documentation
-go-licenses csv . > LICENSE.dependencies
-go-licenses report . | awk -F, '{print $2}' | sort -u > LICENSE.summary
-
 # Generate Man page
 go-md2man -in README.md -out %{name}.1
 
@@ -39,7 +35,7 @@ install -Dpm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %doc README.md CONTRIBUTING.md docs/
-%license LICENSE LICENSE.summary LICENSE.dependencies
+%license LICENSE
 %{_bindir}/%{name}
 %{_mandir}/man1/*.1*
 
