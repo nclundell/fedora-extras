@@ -4,7 +4,6 @@ Name:    systemctl-tui
 Version: 0.4.0
 Release: %autorelease
 Summary: A fast, simple TUI for interacting with systemd services and their logs.  
-
 License: MIT
 URL:     https://github.com/rgwood/%{name}
 Source:  %{url}/archive/refs/tags/v%{version}.tar.gz
