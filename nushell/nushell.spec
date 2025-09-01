@@ -8,6 +8,8 @@ License: MIT
 URL:     https://github.com/nushell/%{name}
 Source:  %{url}/archive/refs/tags/%{version}.tar.gz
 
+Provides: nu
+
 BuildRequires: cargo
 BuildRequires: rust
 BuildRequires: libxcb
