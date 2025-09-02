@@ -47,7 +47,7 @@ Yazi is a blazing fast terminal file manager written in Rust.
 %check
 %cargo_test
 
-%files -n %{crate}
+%files
 %doc README.md
 %license LICENSE
 %license LICENSE.summary
