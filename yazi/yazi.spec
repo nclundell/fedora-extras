@@ -1,4 +1,5 @@
 %global debug_package %{nil}
+%global crate yazi-cli
 
 Name:    yazi
 Version: 25.5.31

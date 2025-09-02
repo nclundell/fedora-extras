@@ -1,3 +1,6 @@
+%global debug_package %{nil}
+%global crate resvg
+
 Name:           resvg
 Version:        0.45.1
 Release:        %autorelease
