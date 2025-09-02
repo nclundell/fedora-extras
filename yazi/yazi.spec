@@ -5,44 +5,52 @@ Version: 25.5.31
 Release: %autorelease
 Summary: Blazing Fast Terminal File Manager
 License: MIT
-URL:     https://github.com/sxyazi/%{name}
-Source:  %{url}/archive/refs/tags/v%{version}.tar.gz
+URL:     https://crates.io/crates/yazi-cli
+Source:  %{crates_source}
 
-BuildRequires: cargo
-BuildRequires: rust
+BuildRequires: cargo-rpm-macros
 
-Requires: file
-Requires: jq
-Requires: ffmpeg
-Requires: fd-find
-Requires: ripgrep
-Requires: fzf
+Recommends: fd-find
+Recommends: file
+Recommends: ffmpeg
+Recommends: fzf
+Recommends: git
+Recommends: git-delta
+Recommends: imagmagick
+Recommends: jq
+Recommends: mediainfo
+Recommends: p7zip
+Recommends: p7zip-plugins
+Recommends: poppler-utils
+Recommends: resvg
+Recommends: ripgrep
+Recommends: zoxide
 
 %description
 Yazi is a blazing fast terminal file manager written in Rust.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{crate}-%{version}
+
+%__cargo vendor
+%cargo_prep -v vendor
 
 %build
-export RUSTFLAGS="%{build_rustflags}"
-cargo build --release --locked
-
-# Generate license documentation
-cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}' | sort -u > LICENSE.summary
-cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}: {p}' | sort -u > LICENSE.dependencies
+%cargo_build
+%{cargo_license} > LICENSE.dependencies
 
 %install
-install -Dpm 0755 target/release/ya -t %{buildroot}%{_bindir}/
-install -Dpm 0755 target/release/yazi -t %{buildroot}%{_bindir}/
+%define cargo_install_lib 0
+%cargo_install
 
 %check
-%{buildroot}%{_bindir}/ya   --version
-%{buildroot}%{_bindir}/yazi --version
+%cargo_test
 
-%files
+%files -n %{crate}
 %doc README.md
-%license LICENSE LICENSE.summary LICENSE.dependencies
+%license LICENSE
+%license LICENSE.summary
+%license LICENSE.dependencies
 %{_bindir}/ya
 %{_bindir}/yazi
 
