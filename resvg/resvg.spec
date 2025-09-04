@@ -1,13 +1,13 @@
 %global debug_package %{nil}
 %global crate resvg
 
-Name:           resvg
-Version:        0.45.1
-Release:        %autorelease
-Summary:        SVG rendering library
-License:        Apache-2.0 OR MIT
-URL:            https://crates.io/crates/resvg
-Source:         %{crates_source}
+Name:     resvg
+Version:  0.45.1
+Release:  %autorelease
+Summary:  SVG rendering library
+License:  Apache-2.0 OR MIT
+URL:      https://github.com/linebender/resvg
+Source:   ${crates_source}
 
 BuildRequires:  cargo-rpm-macros
 
