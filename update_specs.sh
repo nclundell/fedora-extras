@@ -17,6 +17,12 @@ for spec in */*.spec; do
     repo=$(echo "$url" | sed -n 's|https://github.com/\([^/]\+\)/\([^/]\+\).*|\1/\2|p')
 
     if [ -z "$repo" ]; then
+        source=$(awk '/^Source:/ {print $2}' "$spec")
+        source=$(echo "$source" | sed "s/%{name}/$name/g" | sed "s/%{version}/$version/g")
+        repo=$(echo "$source" | sed -n 's|https://github.com/\([^/]\+\)/\([^/]\+\).*|\1/\2|p')
+    fi
+
+    if [ -z "$repo" ]; then
         msg="Could not parse repo from URL in $spec"
         echo "$msg"
         # Create issue if not exists
