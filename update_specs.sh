@@ -52,7 +52,7 @@ for spec in */*.spec; do
         sed -i "s/^Version:.*/Version: $latest/" "$spec"
         git add "$spec"
         git commit -m "Update $name spec to v$latest"
-        git push origin "$branch" || {
+        git push -f origin "$branch" || {
             msg="Failed to push branch $branch for $name"
             echo "$msg"
             if ! gh issue list --state open --search "$name: $msg" | grep -q "$msg"; then

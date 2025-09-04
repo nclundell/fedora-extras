@@ -15,10 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_FEDORA_EXTRAS_WORKFLOW }}
       - name: Install GitHub CLI
         run: sudo apt-get install gh -y
+      - name: Set up authenticated git remote
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GH_FEDORA_EXTRAS_WORKFLOW }}@github.com/${{ github.repository }}.git
       - name: Run update_specs script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_FEDORA_EXTRAS_WORKFLOW }}
         run: bash ./update_specs.sh
