@@ -7,34 +7,36 @@ Release:  %autorelease
 Summary:  SVG rendering library
 License:  Apache-2.0 OR MIT
 URL:      https://github.com/linebender/resvg
-Source:   ${crates_source}
+Source:   %{url}/archive/refs/tags/v%{version}.tar.gz
 
-BuildRequires:  cargo-rpm-macros
+BuildRequires:  cargo
+buildRequires:  rust
 
 %description
 An SVG rendering library.
 
 %prep
-%autosetup -n %{crate}-%{version} -p1
-
-%__cargo vendor
-%cargo_prep -v vendor
+%autosetup -n %{crate}-%{version}
 
 %build
-%cargo_build
-%{cargo_license} > LICENSE.dependencies
+export RUSTFLAGS="%{build_rustflags}"
+cargo build --release --locked
+
+# Generate license documentation
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}' | sort -u > LICENSE.summary
+cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefix none --format '{l}: {p}' | sort -u > LICENSE.dependencies
 
 %install
-%define cargo_install_lib 0
-%cargo_install
+install -Dpm 0755 target/release/resvg -t %{buildroot}%{_bindir}/
 
 %check
-%cargo_test
+%{buildroot}%{_bindir}/resvg --version
 
 %files -n %{crate}
 %license LICENSE-APACHE
 %license LICENSE-MIT
 %license LICENSE.dependencies
+%license LICENSE.summary
 %doc README.md
 %{_bindir}/resvg
 
