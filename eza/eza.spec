@@ -5,7 +5,7 @@
 %global nu_completions_dir %{_datadir}/nushell/completions
 
 Name:    eza
-Version: 0.23.0
+Version: 0.23.1
 Release: %autorelease
 Summary: A modern replacement for ls
 License: EUPL-1.2
