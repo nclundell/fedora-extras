@@ -11,6 +11,12 @@ Source:  %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires: cargo
 BuildRequires: rust
 BuildRequires: pandoc
+BuildRequires: pkg-config
+BuildRequires: dbus-devel
+BuildRequires: libsmbclient-devel
+BuildRequires: openssl-devel
+BuildRequires: perl
+BuildRequires: zlib-devel
 
 %description
 A feature rich terminal UI file transfer and explorer with support for SCP/SFTP/FTP/S3/SMB
@@ -30,6 +36,7 @@ cargo tree --workspace --edges no-build,no-dev,no-proc-macro --no-dedupe --prefi
 install -Dpm 0755 target/release/termscp -t %{buildroot}%{_bindir}/
 mkdir target/man
 sed "s/\$version/v%{version}/g" "docs/man.md" | pandoc --standalone -f markdown -t man > "target/man/termscp.1"
+install -Dpm 0644 target/man/termscp.1 %{buildroot}%{_mandir}/man1/termscp.1
 
 %check
 %{buildroot}%{_bindir}/termscp --version
