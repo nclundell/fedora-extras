@@ -17,5 +17,6 @@ Use at your own risk!
 | [resvg](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/resvg/) | 0.45.1-1 | <div align="center">✅</div> |
 | [starship](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/starship/) | 1.23.0-1 | <div align="center">✅</div> |
 | [systemctl-tui](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/systemctl-tui/) | 0.4.0-1 | <div align="center">✅</div> |
+| [termscp](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/termscp/) | 0.18.0-1 | <div align="center">❌</div> |
 | [topgrade](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/topgrade/) | 16.0.4-1 | <div align="center">✅</div> |
 | [yazi](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/yazi/) | 25.5.31-1 | <div align="center">✅</div> |
