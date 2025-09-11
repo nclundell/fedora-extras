@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:       lazygit
-Version:    0.54.2
+Version: 0.55.0
 Release:    %autorelease
 Summary:    Simple, pragmatic TUI (Terminal UI) frontend for GIT
 License:    MIT
