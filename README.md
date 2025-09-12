@@ -10,9 +10,9 @@ Use at your own risk!
 | [bluetui](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/bluetui/) | 0.6-1 | <div align="center">✅</div> |
 | [bottom](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/bottom/) | 0.11.1-1 | <div align="center">✅</div> |
 | [csvlens](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/csvlens/) | 0.13.0-1 | <div align="center">✅</div> |
-| [eza](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/eza/) | 0.23.1-1 | <div align="center">✅</div> |
+| [eza](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/eza/) | 0.23.2-1 | <div align="center">✅</div> |
 | [lazydocker](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/lazydocker/) | 0.24.1-1 | <div align="center">✅</div> |
-| [lazygit](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/lazygit/) | 0.54.2-1 | <div align="center">✅</div> |
+| [lazygit](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/lazygit/) | 0.55.0-1 | <div align="center">✅</div> |
 | [nushell](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/nushell/) | 0.107.0-1 | <div align="center">✅</div> |
 | [resvg](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/resvg/) | 0.45.1-1 | <div align="center">✅</div> |
 | [starship](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/starship/) | 1.23.0-1 | <div align="center">✅</div> |
