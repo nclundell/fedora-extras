@@ -7,7 +7,7 @@ Use at your own risk!
 
 | Package   | Version   | Status |
 |-----------|-----------|:------:|
-| [bluetui](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/bluetui/) | 0.6-1 | <div align="center">✅</div> |
+| [bluetui](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/bluetui/) | 0.7-1 | <div align="center">✅</div> |
 | [bottom](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/bottom/) | 0.11.2-1 | <div align="center">✅</div> |
 | [csvlens](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/csvlens/) | 0.13.0-1 | <div align="center">✅</div> |
 | [eza](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/eza/) | 0.23.4-1 | <div align="center">✅</div> |
