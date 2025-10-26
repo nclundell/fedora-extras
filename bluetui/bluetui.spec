@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    bluetui
-Version: 0.7
+Version: 0.7.1
 Release: %autorelease
 Summary: TUI for managing bluetooth on Linux
 License: GPL-3.0-or-later
