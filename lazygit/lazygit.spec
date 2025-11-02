@@ -8,7 +8,7 @@ License:    MIT
 URL:        https://github.com/jesseduffield/lazygit
 Source0:    %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires: golang >= 1.24
+BuildRequires: golang >= 1.25
 BuildRequires: go-md2man
 
 %description
