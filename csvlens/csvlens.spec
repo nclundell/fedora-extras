@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    csvlens
-Version: 0.13.0
+Version: 0.14.0
 Release: %autorelease
 Summary: Command-line CSV viewer
 License: MIT
