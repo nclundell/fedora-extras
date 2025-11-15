@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:       lazydocker
-Version:    0.24.1
+Version: 0.24.2
 Release:    %autorelease
 Summary:    The lazier way to manage everything docker
 License:    MIT
