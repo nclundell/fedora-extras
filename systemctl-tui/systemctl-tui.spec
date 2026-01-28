@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    systemctl-tui
-Version: 0.4.0
+Version: 0.4.1-take2
 Release: %autorelease
 Summary: A fast, simple TUI for interacting with systemd services and their logs.  
 License: MIT
