@@ -13,12 +13,12 @@ Use at your own risk!
 | [csvlens](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/csvlens/) | 0.15.0-1 | <div align="center">✅</div> |
 | [eza](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/eza/) | 0.23.4-1 | <div align="center">✅</div> |
 | [lazydocker](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/lazydocker/) | 0.24.3-1 | <div align="center">✅</div> |
-| [lazygit](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/lazygit/) | 0.57.0-1 | <div align="center">❌</div> |
+| [lazygit](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/lazygit/) | 0.57.0-1 | <div align="center">✅</div> |
+| [makemkv](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/makemkv/) | 1.17.7-1 | <div align="center">✅</div> |
 | [nushell](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/nushell/) | 0.109.1-1 | <div align="center">✅</div> |
 | [resvg](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/resvg/) | 0.45.1-1 | <div align="center">✅</div> |
 | [starship](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/starship/) | 1.24.1-1 | <div align="center">✅</div> |
 | [systemctl-tui](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/systemctl-tui/) | 0.4.0-1 | <div align="center">✅</div> |
 | [termscp](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/termscp/) | 0.19.1-1 | <div align="center">✅</div> |
 | [topgrade](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/topgrade/) | 16.7.0-1 | <div align="center">✅</div> |
-| [waypaper](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/waypaper/) | 2.7-1 | <div align="center">❌</div> |
 | [yazi](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/yazi/) | 25.5.31-1 | <div align="center">✅</div> |
