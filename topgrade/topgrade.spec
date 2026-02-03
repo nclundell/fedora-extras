@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:     topgrade
-Version: 16.7.0
+Version: 16.8.0
 Release:  %autorelease
 Summary:  Upgrade all the things
 License:  GPL-3.0-or-later
