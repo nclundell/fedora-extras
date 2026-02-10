@@ -2,7 +2,7 @@
 %global crate resvg
 
 Name:     resvg
-Version:  0.45.1
+Version: 0.46.0
 Release:  %autorelease
 Summary:  SVG rendering library
 License:  Apache-2.0 OR MIT
