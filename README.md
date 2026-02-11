@@ -18,4 +18,4 @@ Use at your own risk!
 | [starship](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/starship/) | 1.24.2-1 | <div align="center">✅</div> |
 | [systemctl-tui](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/systemctl-tui/) | 0.5.1-1 | <div align="center">✅</div> |
 | [termscp](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/termscp/) | 0.19.1-1 | <div align="center">✅</div> |
-| [yazi](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/yazi/) | 26.1.22-1 | <div align="center">🚧</div> |
+| [yazi](https://copr.fedorainfracloud.org/coprs/nclundell/fedora-extras/package/yazi/) | 26.1.22-1 | <div align="center">✅</div> |
