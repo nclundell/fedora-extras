@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    yazi
-Version: 26.1.22
+Version: 26.8.15
 Release: %autorelease
 Summary: Blazing Fast Terminal File Manager
 License: MIT
