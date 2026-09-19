@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    nushell
-Version: 0.114.1
+Version: 0.115.1
 Release: %autorelease
 Summary: A new type of shell
 License: MIT
